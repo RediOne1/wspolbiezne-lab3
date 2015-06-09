@@ -15,7 +15,7 @@ public class Settings {
     public static final long MACHINE_REPAIRING_TIME = 5000;
     //Machine settings
     public static final long SOLVING_TIME = 1000;
-    public static final float BREAK_PROBABILITY = 1f;
+    public static final float BREAK_PROBABILITY = 0f;
     public static final int ADDING_MACHINES_COUNT = 2;
     public static final int MULTIPLYING_MACHINES_COUNT = 2;
     //Chief settings
@@ -28,11 +28,14 @@ public class Settings {
     //Customer interval
     public static final int CUSTOMER_COUNT = 5;
     public static final long CUSTOMER_MIN_INTERVAL = 1000;
-    public static final long CUSTOMER_MAX_INTERVAL = 10000;
+    public static final long CUSTOMER_MAX_INTERVAL = 5000;
     //Shop settings
+    public static final int SHOP_COUNT = 3;
     public static final int ADD_TASKS_MAX_COUNT = 5;
     public static final int MULTIPLY_TASKS_MAX_COUNT = 5;
     //Courier settings
+    public static final int COURIER_COUNT = 5;
+    public static final long DRIVE_TIME = 5000;
     public static List<Courier> courierList = new ArrayList<>();
     public static List<Factory> factoryList = new ArrayList<>();
     public static List<Shop> shopList = new ArrayList<>();

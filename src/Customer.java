@@ -32,14 +32,25 @@ public class Customer extends Thread {
             }
             String solvedTask = tryGetSolvedTask();
             if (solvedTask != null && Settings.TRYB == Settings.GADATLIWY)
-                System.out.println("Customer received task: " + solvedTask);
+                System.out.println("Customer " + name + " bought task: " + solvedTask);
         }
     }
 
     private synchronized String tryGetSolvedTask() {
-        if (Settings.solvedTasks.size() > 0)
-            return Settings.solvedTasks.remove(0).toString();
-        return null;
+        int randomShopIndex = random.nextInt(Settings.shopList.size());
+        Shop shop = Settings.shopList.get(randomShopIndex);
+        if (Settings.TRYB == Settings.GADATLIWY)
+            System.out.println("Customer " + name + " goes to " + shop.toString());
+        boolean addOperator = random.nextBoolean();
+        String boughtTask;
+        if (addOperator) {
+            boughtTask = shop.buyAddTask();
+        } else {
+            boughtTask = shop.buyMultiplyTask();
+        }
+        if (boughtTask == null && Settings.TRYB == Settings.GADATLIWY)
+            System.out.println("Customer " + name + " returned from shop " + shop.toString() + " (no " + (addOperator ? "add " : "multiply ") + "task to buy)");
+        return boughtTask;
     }
 
     private long getSleepTime() {

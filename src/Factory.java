@@ -14,6 +14,7 @@ public class Factory {
     public List<Task> solvedMultiplyTasks = new ArrayList<>();
     public List<AddingMachine> addingMachines = new ArrayList<>();
     public List<MultiplyingMachine> multiplyingMachines = new ArrayList<>();
+    public String name = "";
 
     //Machine settings
     public long SOLVING_TIME = Settings.SOLVING_TIME;
@@ -33,5 +34,21 @@ public class Factory {
         chief.start();
 
         employeeList.forEach(Employee::start);
+    }
+
+    public synchronized List<Task> buyTask(char operator, int maxCount){
+        List<Task> boughtTask = new ArrayList<>();
+        if(operator == '+'){
+            while(solvedAddTasks.size()>0 && boughtTask.size()<maxCount)
+                boughtTask.add(solvedAddTasks.remove(0));
+        } else
+            while(solvedMultiplyTasks.size()>0 && boughtTask.size()<maxCount)
+                boughtTask.add(solvedMultiplyTasks.remove(0));
+        return boughtTask;
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }

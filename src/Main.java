@@ -13,14 +13,23 @@ public class Main {
     public static void main(String[] args) {
 
         FactoryCreator factoryCreator = new FactoryCreator();
-        factoryCreator.addEmployee("Jan")
+        factoryCreator
+                .setName("Biedronka")
+                .addEmployee("Jan")
                 .addEmployee("Adam");
 
         Settings.factoryList.add(factoryCreator.create());
         Settings.factoryList.forEach(Factory::start);
 
+        for (int i = 0; i < Settings.COURIER_COUNT; i++)
+            Settings.courierList.add(new Courier(""+(i + 1)));
+
+        for (int i = 0; i < Settings.SHOP_COUNT; i++)
+            Settings.shopList.add(new Shop("" + (i + 1)));
+
         List<Customer> customerList = new ArrayList<>();
-        customerList.add(new Customer());
+        for (int i = 0; i < Settings.CUSTOMER_COUNT; i++)
+            customerList.add(new Customer("" + (i + 1)));
         customerList.forEach(Customer::start);
 
 
@@ -28,11 +37,11 @@ public class Main {
             launchScanner();
     }
 
-    private static void launchScanner(){
+    private static void launchScanner() {
         Scanner scanner = new Scanner(System.in);
-        while(true){
+        while (true) {
             String command = scanner.nextLine();
-            switch (command){
+            switch (command) {
                 case "gadatliwy_on":
                     Settings.TRYB = Settings.GADATLIWY;
                     break;
