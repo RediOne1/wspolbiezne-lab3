@@ -14,15 +14,34 @@ public class Main {
 
         FactoryCreator factoryCreator = new FactoryCreator();
         factoryCreator
-                .setName("Biedronka")
+                .setName("FM Logistic")
                 .addEmployee("Jan")
-                .addEmployee("Adam");
-
+                .addEmployee("Adam")
+                /*.addEmployee("Stalin")
+                .addEmployee("Hitler")
+                .addEmployee("Ma³ysz")
+                .addEmployee("Nowak")
+                .addEmployee("Seba")*/
+                .addEmployee("Krzysiek");
         Settings.factoryList.add(factoryCreator.create());
+
+        /*factoryCreator
+                .reset()
+                .setName("LV Creator")
+                .addEmployee("Jan")
+                .addEmployee("Adam")
+                .addEmployee("Stalin")
+                .addEmployee("Hitler")
+                .addEmployee("Ma³ysz")
+                .addEmployee("Nowak")
+                .addEmployee("Seba")
+                .addEmployee("Krzysiek");
+        Settings.factoryList.add(factoryCreator.create());*/
+
         Settings.factoryList.forEach(Factory::start);
 
         for (int i = 0; i < Settings.COURIER_COUNT; i++)
-            Settings.courierList.add(new Courier(""+(i + 1)));
+            Settings.courierList.add(new Courier("" + (i + 1)));
 
         for (int i = 0; i < Settings.SHOP_COUNT; i++)
             Settings.shopList.add(new Shop("" + (i + 1)));

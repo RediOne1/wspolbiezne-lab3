@@ -12,7 +12,7 @@ public class Chief extends Thread {
     private String name;
     private Factory factory;
 
-    public Chief(Factory factory){
+    public Chief(Factory factory) {
         name = "";
         random = new Random();
         this.factory = factory;
@@ -45,7 +45,7 @@ public class Chief extends Thread {
     private synchronized void addTask(Task task) {
         factory.taskList.add(task);
         if (Settings.TRYB == Settings.GADATLIWY)
-            System.out.println(name + " Add task: " + task.arg1 + task.operator + task.arg2);
+            System.out.println(factory.toString() + ": " + name + " Add task: " + task.arg1 + task.operator + task.arg2);
     }
 
     private long getSleepTime() {
